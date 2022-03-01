@@ -1,4 +1,5 @@
-# PHYCOM: A MULTI-LAYER PARAMETRIC NETWORK FOR JOINT LINEAR IMPAIRMENTS COMPENSATION AND SYMBOL DETECTION
+# PhyCOM: A Multi-Layer Parametric Network For Joint Linear Impairments Compensation and symbol detection 
+
 
 This repo contains the python code for the following paper
 
