@@ -24,7 +24,7 @@ Numerical examples are provided to demonstrate the effectiveness of PhyCOM netwo
 
 ### Generate Figures
 
-The `\examples` folder contains several python codes for creating the article figures. All the results are stored in the `\examples\simulation_{}` subfolder.
+The `\examples` folder contains several python codes for creating the article figures. All the results are stored in the `\results\simulation_{}` subfolder.
 
 * `\simulation1.py`: Figure 6
 * `\simulation2_mse_ser.py`: Figure 7
