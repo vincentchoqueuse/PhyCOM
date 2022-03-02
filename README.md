@@ -32,14 +32,28 @@ The `\examples` folder contains several python codes for creating the article fi
 * `\simulation3_mse_ser.py`: Figure 8
 * `\simulation4_mse_ser.py`: Figure 10
 
+
+### Create a PhyCOM Network
+
+A PhyCOM network is composed of several layer that can be stacked using a Sequential object
+
+```
+model = PhyCOM(OrderedDict([
+    ('iq2', IQ_imbalance()),
+    ('cfo', CFO()),
+    ('fir', Inverse_FIR([1, 0, 0, 0, 0, 0, 0, 0])),
+    ('iq1', IQ_imbalance()),
+    ('detector', Demodulator(alphabet))
+    ]))
+```
+
 ### Custom Layer
 
-To create new custom linear layers, you have to code a new class that inherits from the trainable module base class. The inherited class should override three methods : `compute_grad`, `backward` and `compute_H`. See the file `phycom/module.py`.
+To create new custom linear layers, you have to code a new class that inherits from the `Trainable_Module` base class. The inherited class should override three methods : `compute_grad`, `backward` and `compute_H`. See the file `phycom/module.py`.
 
 For example, the code of the CFO trainable layer is given below
 
 ```
-
 class CFO(Trainable_Module):
 
     def __init__(self, cfo=0, name="CFO"):
