@@ -47,6 +47,8 @@ model = PhyCOM(OrderedDict([
     ]))
 ```
 
+During training, each layer will automatically update their trainable parameters.
+
 ### Custom Layer
 
 To create new custom linear layers, you have to code a new class that inherits from the `Trainable_Module` base class. The inherited class should override three methods : `compute_grad`, `backward` and `compute_H`. See the file `phycom/module.py`.
