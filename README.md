@@ -3,7 +3,7 @@
 
 This repo contains the python code for the following paper
 
-* Vincent Choqueuse, Alexandru Frunza, Stéphane Azou, Pascal Morel. "PhyCOM: A Multi-Layer Parametric Network for Joint Linear Impairments Compensation and Symbol Detection". 
+* Vincent Choqueuse, Alexandru Frunza, Stéphane Azou, Pascal Morel. ["PhyCOM: A Multi-Layer Parametric Network for Joint Linear Impairments Compensation and Symbol Detection"](https://arxiv.org/abs/2203.00266), Arxiv 2203.00266
 
 ## Abstract
 
