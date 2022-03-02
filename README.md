@@ -36,4 +36,45 @@ The `\examples` folder contains several python codes for creating the article fi
 
 To create new custom linear layers, you have to code a new class that inherits from the trainable module base class. The inherited class should override three methods : `compute_grad`, `backward` and `compute_H`. See the file `phycom/module.py`.
 
+For example, the code of the CFO trainable layer is given below
 
+```
+
+class CFO(Trainable_Module):
+
+    def __init__(self, cfo=0, name="CFO"):
+        self.name = name
+        self.grad = None
+        self.requires_grad = True
+        self.training = True
+        self.set_parameter(cfo)
+
+    def compute_H(self, N):
+        # compute the layer transfer matrix
+        n_vect = np.arange(N)
+        D = np.diag(np.exp(1j*self._parameters[0]*n_vect))
+        H = np.block([[np.real(D), -np.imag(D)], [np.imag(D), np.real(D)]])
+        return H
+
+    def compute_grad(self):
+        # compute gradient 
+        N = len(self._x)
+        n_vect = np.arange(N)
+        term1 = 1j*n_vect*np.exp(1j*self._parameters[0]*n_vect)*self._x
+        K = np.atleast_2d(term1).T
+        L = np.vstack([np.real(K), np.imag(K)])
+        return L
+
+    def forward(self, x):
+        # forward propagation
+        N = len(x)
+        n_vect = np.arange(N)
+        y = x*np.exp(1j*self._parameters[0]*n_vect)
+
+        if self._training:
+            self._x = x
+            self._y = y
+            self._H = self.compute_H(N)
+
+        return y
+```
